@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button, Alert } from 'react-bootstrap'
 import Loader from '../components/Loader'
 import { Link } from 'react-router-dom'
 import FormContainer from '../components/FormContainer'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 const { REACT_APP_API } = process.env
 
-const Register = () => {
+const Register = ({ history }) => {
   const [formData, setFormData] = useState({
     name: 'michael donchenko',
     email: 'michael1994d@gmail.com',
@@ -17,6 +18,8 @@ const Register = () => {
   const [error, setError] = useState(false)
   const [message, setMessage] = useState(false)
   const { name, email, password, confirmPassword } = formData
+
+  const { user, token } = useSelector((state) => state.userInfo)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -41,10 +44,19 @@ const Register = () => {
 
       setMessage(res.data.message)
     } catch (error) {
-      setError(error.res.data.error)
+      setError(error.response.data.error)
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (token && user.role === 'subscriber') {
+      history.push('/user-dashboard')
+    }
+    if (token && user.role === 'admin') {
+      history.push('/admin-dashboard')
+    }
+  }, [user])
 
   return (
     <FormContainer>
