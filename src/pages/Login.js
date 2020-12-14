@@ -11,8 +11,8 @@ import { LOGIN_USER } from '../types/userConstants'
 
 const Login = ({ history }) => {
   const { REACT_APP_API } = process.env
-  const [email, setEmail] = useState('michael1994d@gmail.com')
-  const [password, setPassword] = useState('12345678')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -41,10 +41,10 @@ const Login = ({ history }) => {
 
   useEffect(() => {
     if (token && user.role === 'subscriber') {
-      history.push('/user-dashboard')
+      history.push('/user/dashboard')
     }
     if (token && user.role === 'admin') {
-      history.push('/admin-dashboard')
+      history.push('/admin/dashboard')
     }
   }, [user])
 

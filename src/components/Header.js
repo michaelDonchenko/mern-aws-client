@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <>
       <Navbar expand="lg" className="navbar navbar-dark bg-primary">
-        <Container fluid style={{ width: '90%' }}>
+        <Container>
           <Navbar.Brand>Mern-AWS</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -20,13 +20,13 @@ const Header = () => {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              {user && user.role === 'subscriber' && (
-                <LinkContainer to="/user-dashboard">
+              {user && token && user.role === 'subscriber' && (
+                <LinkContainer to="/user/dashboard">
                   <Nav.Link>Dashboard</Nav.Link>
                 </LinkContainer>
               )}
-              {user && user.role === 'admin' && (
-                <LinkContainer to="/admin-dashboard">
+              {user && token && user.role === 'admin' && (
+                <LinkContainer to="/admin/dashboard">
                   <Nav.Link>Admin Dashboard</Nav.Link>
                 </LinkContainer>
               )}

@@ -1,0 +1,14 @@
+.dashboard_link {
+  font-size: 18px;
+  margin: 10px 2px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.dashboard_link:hover {
+  font-weight: 600;
+}
+
+.myCard:hover {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}

@@ -9,10 +9,10 @@ const { REACT_APP_API } = process.env
 
 const Register = ({ history }) => {
   const [formData, setFormData] = useState({
-    name: 'michael donchenko',
-    email: 'michael1994d@gmail.com',
-    password: '12345678',
-    confirmPassword: '12345678',
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
